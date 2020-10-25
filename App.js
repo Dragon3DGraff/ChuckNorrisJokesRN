@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import RandomJokes from './RandomJokes';
+import Favourites from "./Favourites";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	const [viewFavourites, setViewFavourites] = useState(false);
+
+	function showFavourite(){
+		setViewFavourites(!viewFavourites)
+	}
+	return (
+		<View style={styles.container}>
+			<Text style={styles.header}>Chuck Norris Jokes</Text>
+			<View style={styles.switchmodeview}>
+				<Button onPress={showFavourite} title={!viewFavourites ? 'Favourites' : 'Get Jokes'}></Button>
+			</View>
+			<View>
+				{!viewFavourites ? <RandomJokes ></RandomJokes>: <Favourites ></Favourites>}
+			</View>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#C4C4C4',
+		alignItems: 'center',
+		marginTop: 25,
+	},
+	header: {
+		fontSize: 22,
+	},
+	switchmodeview: {
+		margin: 10,
+	},
 });
