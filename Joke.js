@@ -22,9 +22,9 @@ function Joke({joke, updateState, number}){
 			</Text>
 			<Text onPress={addToFavourite}>
 				{!isFavourite
-					? 
+					?
 					<Text style={styles.star}>&#9734;</Text>
-					: 
+					:
 					<Text style={styles.star}>&#9733;</Text>
 				}
 			</Text>
